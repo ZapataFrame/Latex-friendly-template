@@ -117,31 +117,35 @@
 % Cover Page Command
 \newcommand{\makecustomcover}[6]{ 
     \begin{titlepage}
-        \newgeometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
+        \newgeometry{top=2cm, bottom=2cm, left=5cm, right=2.5cm}
         \thispagestyle{empty}
+        
+        % Sidebar
+        \begin{tikzpicture}[remember picture, overlay]
+            \fill[\themecolor] (current page.north west) rectangle ([xshift=3.5cm]current page.south west);
+        \end{tikzpicture}
+        
         \begin{center}
             
-            % Logos
-            \begin{tabular}{cp{5cm}c}
-                \includegraphics[height=2.25cm]{logos/UTYP.png} & & \includegraphics[height=2.25cm]{logos/LogoUPV_2023.png}
-            \end{tabular}
+            % Logos (Aligned to margins)
+            \noindent\begin{minipage}{\linewidth}
+                \includegraphics[height=1.5cm]{logos/UTYP.png}
+                \hfill
+                \includegraphics[height=1.5cm]{logos/LogoUPV_2023.png}
+            \end{minipage}
             
-            \vspace{0.75cm}
-            {\Large \textbf{UNIVERSIDAD POLITÉCNICA DE VICTORIA} \par}
-            \vspace{0.5cm}
-            \hrule height 1pt
-            \vspace{0.1cm} 
-            \hrule height 1pt
-            \vspace{1.2cm}
+            \vspace{2cm}
             
             % Title
             {\huge \textbf{#1} \par}
             \vspace{0.5cm}
             {\large \textit{#2} \par}
-            \vspace{1.2cm}
+            \vspace{1.5cm}
             
-            % Document Type
-            {\Large #6 \par}
+            % University and Career (Replaces Document Type)
+            {\Large Universidad Politécnica de Victoria \par}
+            \vspace{0.5cm}
+            {\large Ingeniería en Tecnologías de la Información e Innovación Digital \par}
             \vspace{1.5cm}
             
             % Authors
@@ -161,8 +165,6 @@
             \begin{flushright}
                 \large #5
             \end{flushright}
-            
-            \HRule
             
         \end{center}
         \restoregeometry
