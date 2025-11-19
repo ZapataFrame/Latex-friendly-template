@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage{nord-style}
+\usepackage{lipsum}
+\usepackage{pgfplots} % For generating graphs
+\pgfplotsset{compat=1.18}
+
+% Document Metadata
+\newcommand{\mytitle}{Impacto del Consumo de Helado en la Felicidad de los Pingüinos}
+\newcommand{\mysubtitle}{Un Estudio Longitudinal en la Antártida}
+\newcommand{\mydoctype}{REPORTE DE INVESTIGACIÓN}
+\newcommand{\myauthor}{Señor Pingüino}
+\newcommand{\myprofessor}{Dr. Oso Polar}
+
+% Dynamic Date (Spanish format)
+\newcommand{\mydate}{Ciudad Victoria, Tamaulipas, a \today}
+
+% Customize Author Label
+\renewcommand{\authorlabel}{AUTOR}
+
+\begin{document}
+
+% Cover Page
+\makecustomcover{\mytitle}{\mysubtitle}{\myauthor}{\myprofessor}{\mydate}{\mydoctype}
+
+% Front Matter
+\pagenumbering{roman}
+
+% Abstract
+\clearpage
+\section*{\centering Resumen}
+\addcontentsline{toc}{section}{Resumen}
+
+Este estudio investiga la correlación directa entre el consumo de helado de diversos sabores y los niveles de felicidad percibida en una población controlada de pingüinos Adelia (\textit{Pygoscelis adeliae}) en la Antártida. Durante un periodo de seis meses, se suministraron dosis diarias de helado de pescado, krill y vainilla a los sujetos de prueba. Los resultados indican un aumento significativo del 400\% en los aleteos de alegría tras el consumo de helado de krill, mientras que el sabor vainilla generó confusión existencial. Estos hallazgos sugieren que la implementación de quioscos de helado podría ser clave para la estabilidad geopolítica del Polo Sur.
+
+\vspace{1cm}
+\textbf{Palabras clave:} Pingüinos, Helado, Felicidad, Krill, Antártida.
+
+% Table of Contents
+\clearpage
+\setheadercolor{\toccolor} 
+\tableofcontents
+\clearpage
+\setheadercolor{\themecolor}
+
+% Main Content
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introducción}
+La búsqueda de la felicidad es un universal biológico que trasciende las barreras de las especies. En el caso de los pingüinos, tradicionalmente se ha asociado su bienestar a la abundancia de peces y la ausencia de focas leopardo. Sin embargo, observaciones anecdóticas sugieren que el acceso a postres congelados podría tener un impacto psicométrico superior.
+
+El presente estudio, encargado por el Dr. Oso Polar (quien curiosamente reside en el Ártico pero supervisa operaciones antárticas por Zoom), busca cuantificar esta relación. La hipótesis nula plantea que "un pingüino con helado es igual de feliz que uno sin helado", una afirmación que desafía el sentido común y las leyes de la termodinámica emocional.
+
+\section{Metodología}
+Se seleccionó una muestra aleatoria de 50 pingüinos Adelia. El grupo de control recibió cubos de hielo estándar, mientras que el grupo experimental recibió bolas de helado artesanal.
+
+\subsection{Instrumentos de Medición}
+La felicidad se midió utilizando la Escala de Aleteo Sincronizado (EAS), que contabiliza el número de aleteos por minuto (apm) y la intensidad del graznido.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Niveles de Felicidad por Sabor},
+            xlabel={Sabor de Helado},
+            ylabel={Aleteos por Minuto (apm)},
+            symbolic x coords={Control, Pescado, Krill, Vainilla},
+            xtick=data,
+            ybar,
+            bar width=1cm,
+            nodes near coords,
+            grid=major,
+            color=nord10
+        ]
+        \addplot coordinates {(Control, 10) (Pescado, 45) (Krill, 95) (Vainilla, 12)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Comparativa de la respuesta emocional según el estímulo gustativo.}
+    \label{fig:felicidad_sabores}
+\end{figure}
+
+\section{Resultados}
+Los datos recolectados muestran una tendencia irrefutable. Como se observa en la Figura \ref{fig:felicidad_sabores}, el helado de Krill es el detonante máximo de euforia.
+
+\subsection{Análisis de Sabores}
+\begin{itemize}
+    \item \textbf{Control (Hielo):} Los sujetos mostraron indiferencia (10 apm).
+    \item \textbf{Pescado:} Aceptación moderada (45 apm).
+    \item \textbf{Krill:} Éxtasis total (95 apm). Se registraron casos de baile espontáneo.
+    \item \textbf{Vainilla:} Confusión (12 apm). Un sujeto intentó empollar la bola de helado.
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \caption{Estadísticas descriptivas del consumo de helado.}
+    \label{tab:stats}
+    \begin{tabular}{l c c c}
+        \toprule
+        \textbf{Sabor} & \textbf{Media (apm)} & \textbf{Desviación Estándar} & \textbf{Tasa de Derretimiento} \\
+        \midrule
+        Hielo & 10.2 & 1.1 & Lenta \\
+        Pescado & 45.5 & 5.3 & Media \\
+        Krill & 95.8 & 12.4 & Rápida (por consumo voraz) \\
+        Vainilla & 12.1 & 8.9 & Media \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Discusión}
+Los resultados apoyan la teoría del "Cerebro Congelado Feliz". Es notable que el Dr. Oso Polar, siendo un depredador natural en otro hemisferio, tenga tanto interés en engordar a la población de pingüinos mediante carbohidratos complejos. Esto plantea dilemas éticos que serán abordados en futuras investigaciones.
+
+\begin{figure}[h]
+    \flushleft % Figura no centrada
+    \begin{tikzpicture}
+        \draw[fill=nord14] (0,0) rectangle (4,4);
+        \node at (2,2) {\color{nord0}\textbf{Foto de Pingüino Feliz}};
+    \end{tikzpicture}
+    \caption{Sujeto \#42 disfrutando de su ración diaria (Alineación Izquierda).}
+    \label{fig:pinguino_feliz}
+\end{figure}
+
+\section{Conclusiones}
+El helado no solo es delicioso, sino esencial para el desarrollo psicocognitivo de los pingüinos. Se recomienda la instalación inmediata de una franquicia de "Baskin-Robbins" en la Base McMurdo.
+
+\clearpage
+\addcontentsline{toc}{section}{Índice de figuras}
+\listoffigures
+
+\clearpage
+\addcontentsline{toc}{section}{Índice de cuadros}
+\listoftables
+
+\end{document}

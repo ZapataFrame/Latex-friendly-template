@@ -1,0 +1,188 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{nord-style}[2025/11/19 Nord Theme for UPV - Dark Edition]
+
+% Required Packages
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish,mexico]{babel}
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{titlesec}
+\RequirePackage{helvet} 
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+\RequirePackage{caption}
+\RequirePackage{float}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{ragged2e}
+\RequirePackage{subcaption}
+\RequirePackage{datetime} % For dynamic dates if needed
+
+% Set default font to Sans Serif
+\renewcommand{\familydefault}{\sfdefault}
+
+% Nord Color Palette
+\definecolor{nord0}{HTML}{2E3440} % Polar Night (Darkest)
+\definecolor{nord1}{HTML}{3B4252}
+\definecolor{nord2}{HTML}{434C5E}
+\definecolor{nord3}{HTML}{4C566A}
+\definecolor{nord4}{HTML}{D8DEE9} % Snow Storm
+\definecolor{nord5}{HTML}{E5E9F0}
+\definecolor{nord6}{HTML}{ECEFF4}
+\definecolor{nord7}{HTML}{8FBCBB} % Frost
+\definecolor{nord8}{HTML}{88C0D0}
+\definecolor{nord9}{HTML}{81A1C1}
+\definecolor{nord10}{HTML}{5E81AC}
+\definecolor{nord11}{HTML}{BF616A} % Aurora (Red)
+\definecolor{nord12}{HTML}{D08770}
+\definecolor{nord13}{HTML}{EBCB8B}
+\definecolor{nord14}{HTML}{A3BE8C}
+\definecolor{nord15}{HTML}{B48EAD}
+
+% Configuration Variables
+\newcommand{\themecolor}{nord0} 
+\newcommand{\toccolor}{nord0}  
+\newcommand{\accentcolor}{nord10} 
+\newcommand{\headertextcolor}{nord4}
+\newcommand{\sectioncolor}{nord1}
+
+% Label Variables
+\newcommand{\authorlabel}{AUTORES} % Default
+\newcommand{\professorlabel}{CATEDRÁTICO}
+
+% Variable to hold current header color
+\newcommand{\currentheadercolor}{\themecolor}
+
+% Command to switch header color
+\newcommand{\setheadercolor}[1]{\renewcommand{\currentheadercolor}{#1}}
+
+% Page Geometry
+\geometry{
+    left=2.5cm,
+    top=4.0cm, 
+    right=2.5cm,
+    bottom=3.0cm,
+    headheight=80pt, 
+    footskip=1.5cm
+}
+
+% Header and Footer Configuration
+\pagestyle{fancy}
+\fancyhf{} % Clear all
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+
+% Header Design
+\fancyhead[C]{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % 1. Solid Color Bar at Top (Edge to Edge)
+        \node[fill=\currentheadercolor, minimum width=\paperwidth, minimum height=0.6cm, anchor=north] (headerbar) at (current page.north) {};
+        
+        % 2. Logos (Space Between) - Below the bar
+        \node[anchor=north west] at ([xshift=2.5cm, yshift=-0.8cm]current page.north west) {\includegraphics[height=1.2cm]{logos/UTYP.png}};
+        \node[anchor=north east] at ([xshift=-2.5cm, yshift=-0.8cm]current page.north east) {\includegraphics[height=1.2cm]{logos/LogoUPV_2023.png}};
+        
+        % 3. Full Width Divider Line
+        \draw[color=nord3, line width=0.5pt] ([yshift=-2.5cm]current page.north west) -- ([yshift=-2.5cm]current page.north east);
+    \end{tikzpicture}
+}
+
+% Footer Design
+\fancyfoot[C]{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % 1. Page Number at Bottom Right
+        \node[text=\currentheadercolor, font=\bfseries, anchor=south east] at ([xshift=-2.5cm, yshift=1.0cm]current page.south east) {\thepage};
+        
+        % 2. Solid Color Bar at Bottom (Edge to Edge)
+        \node[fill=\currentheadercolor, minimum width=\paperwidth, minimum height=0.6cm, anchor=south] at (current page.south) {};
+    \end{tikzpicture}
+}
+
+% Section Styling
+\titleformat{\section}
+{\color{\sectioncolor}\normalfont\Large\bfseries}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{\sectioncolor}\normalfont\large\bfseries}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\color{\sectioncolor}\normalfont\normalsize\bfseries}
+{\thesubsubsection}{1em}{}
+
+% Cover Page Command
+\newcommand{\makecustomcover}[6]{ 
+    \begin{titlepage}
+        \newgeometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
+        \thispagestyle{empty}
+        \begin{center}
+            
+            % Logos
+            \begin{tabular}{cp{5cm}c}
+                \includegraphics[height=2.25cm]{logos/UTYP.png} & & \includegraphics[height=2.25cm]{logos/LogoUPV_2023.png}
+            \end{tabular}
+            
+            \vspace{0.75cm}
+            {\Large \textbf{UNIVERSIDAD POLITÉCNICA DE VICTORIA} \par}
+            \vspace{0.5cm}
+            \hrule height 1pt
+            \vspace{0.1cm} 
+            \hrule height 1pt
+            \vspace{1.2cm}
+            
+            % Title
+            {\huge \textbf{#1} \par}
+            \vspace{0.5cm}
+            {\large \textit{#2} \par}
+            \vspace{1.2cm}
+            
+            % Document Type
+            {\Large #6 \par}
+            \vspace{1.5cm}
+            
+            % Authors
+            {\large \authorlabel: \par}
+            \vspace{0.5cm}
+            {\textbf{#3} \par}
+            \vspace{1.5cm}
+            
+            % Professor
+            {\large \professorlabel: \par}
+            \vspace{0.5cm}
+            {\textbf{#4} \par}
+            
+            \vfill
+            
+            % Date
+            \begin{flushright}
+                \large #5
+            \end{flushright}
+            
+            \HRule
+            
+        \end{center}
+        \restoregeometry
+    \end{titlepage}
+}
+
+% Helper for HRule
+\newcommand{\HRule}{\rule{\linewidth}{0.25mm}}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=\accentcolor,
+    filecolor=\accentcolor,      
+    urlcolor=\accentcolor,
+    pdftitle={Documento},
+    pdfpagemode=FullScreen,
+}
+
+% Caption customization
+\captionsetup{labelfont={bf,color=\themecolor}}
+
+\endinput
