@@ -17,4 +17,11 @@ pdflatex -interaction=nonstopmode $MAIN_FILE.tex
 # 4. Third Compilation (Ensure all cross-references are correct)
 pdflatex -interaction=nonstopmode $MAIN_FILE.tex
 
-echo "Compilation finished."
+if [ $? -eq 0 ]; then
+    echo "Compilation finished successfully."
+    echo "Opening $MAIN_FILE.pdf..."
+    xdg-open "$MAIN_FILE.pdf" &
+else
+    echo "Compilation failed."
+    exit 1
+fi

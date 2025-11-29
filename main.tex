@@ -1,134 +1,399 @@
 \documentclass[12pt]{article}
 \usepackage{nord-style}
 \usepackage{lipsum}
-\usepackage{pgfplots} % For generating graphs
-\pgfplotsset{compat=1.18}
 
 % Document Metadata
-\newcommand{\mytitle}{Impacto del Consumo de Helado en la Felicidad de los Pingüinos}
-\newcommand{\mysubtitle}{Un Estudio Longitudinal en la Antártida}
-\newcommand{\mydoctype}{REPORTE DE INVESTIGACIÓN}
-\newcommand{\myauthor}{Señor Pingüino}
-\newcommand{\myprofessor}{Dr. Oso Polar}
+\newcommand{\mytitle}{Manual de Uso de la Plantilla}
+\newcommand{\mysubtitle}{Edición Especial: Pingüinos de Madagascar}
+\newcommand{\mydoctype}{GUÍA DE REFERENCIA}
+\newcommand{\myauthor}{Kowalski}
+\newcommand{\myprofessor}{Skipper}
+\newcommand{\mydate}{Antártida, \today}
 
-% Dynamic Date (Spanish format)
-\newcommand{\mydate}{Ciudad Victoria, Tamaulipas, a \today}
-
-% Customize Author Label
-\renewcommand{\authorlabel}{AUTOR}
+\renewcommand{\authorlabel}{ESTRATEGA}
 
 \begin{document}
 
-% Cover Page
 \makecustomcover{\mytitle}{\mysubtitle}{\myauthor}{\myprofessor}{\mydate}{\mydoctype}
 
-% Front Matter
-\pagenumbering{roman}
-
-% Abstract
 \clearpage
-\section*{\centering Resumen}
-\addcontentsline{toc}{section}{Resumen}
-
-Este estudio investiga la correlación directa entre el consumo de helado de diversos sabores y los niveles de felicidad percibida en una población controlada de pingüinos Adelia (\textit{Pygoscelis adeliae}) en la Antártida. Durante un periodo de seis meses, se suministraron dosis diarias de helado de pescado, krill y vainilla a los sujetos de prueba. Los resultados indican un aumento significativo del 400\% en los aleteos de alegría tras el consumo de helado de krill, mientras que el sabor vainilla generó confusión existencial. Estos hallazgos sugieren que la implementación de quioscos de helado podría ser clave para la estabilidad geopolítica del Polo Sur.
-
-\vspace{1cm}
-\textbf{Palabras clave:} Pingüinos, Helado, Felicidad, Krill, Antártida.
-
-% Table of Contents
-\clearpage
-\setheadercolor{\toccolor} 
+\setheadercolor{\toccolor}
 \tableofcontents
 \clearpage
 \setheadercolor{\themecolor}
 
-% Main Content
-\clearpage
-\pagenumbering{arabic}
-\setcounter{page}{1}
-
 \section{Introducción}
-La búsqueda de la felicidad es un universal biológico que trasciende las barreras de las especies. En el caso de los pingüinos, tradicionalmente se ha asociado su bienestar a la abundancia de peces y la ausencia de focas leopardo. Sin embargo, observaciones anecdóticas sugieren que el acceso a postres congelados podría tener un impacto psicométrico superior.
+Este documento sirve como una guía exhaustiva para la utilización de la plantilla LaTeX "Nord Theme". A continuación, se presentan ejemplos prácticos de los elementos más comunes, todos explicados con la ayuda de nuestros amigos los pingüinos.
 
-El presente estudio, encargado por el Dr. Oso Polar (quien curiosamente reside en el Ártico pero supervisa operaciones antárticas por Zoom), busca cuantificar esta relación. La hipótesis nula plantea que "un pingüino con helado es igual de feliz que uno sin helado", una afirmación que desafía el sentido común y las leyes de la termodinámica emocional.
+% ==========================================
+%  1. Tablas
+% ==========================================
+\section{Tablas}
+Las tablas son fundamentales para organizar datos de misiones y raciones de pescado.
 
-\section{Metodología}
-Se seleccionó una muestra aleatoria de 50 pingüinos Adelia. El grupo de control recibió cubos de hielo estándar, mientras que el grupo experimental recibió bolas de helado artesanal.
+\subsection{Tabla Simple}
+Una tabla estándar utilizando el paquete \texttt{booktabs} para un acabado profesional.
 
-\subsection{Instrumentos de Medición}
-La felicidad se midió utilizando la Escala de Aleteo Sincronizado (EAS), que contabiliza el número de aleteos por minuto (apm) y la intensidad del graznido.
-
-\begin{figure}[h]
+% latex tablasimple
+\begin{table}[h]
     \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            title={Niveles de Felicidad por Sabor},
-            xlabel={Sabor de Helado},
-            ylabel={Aleteos por Minuto (apm)},
-            symbolic x coords={Control, Pescado, Krill, Vainilla},
-            xtick=data,
-            ybar,
-            bar width=1cm,
-            nodes near coords,
-            grid=major,
-            color=nord10
-        ]
-        \addplot coordinates {(Control, 10) (Pescado, 45) (Krill, 95) (Vainilla, 12)};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Comparativa de la respuesta emocional según el estímulo gustativo.}
-    \label{fig:felicidad_sabores}
-\end{figure}
-
-\section{Resultados}
-Los datos recolectados muestran una tendencia irrefutable. Como se observa en la Figura \ref{fig:felicidad_sabores}, el helado de Krill es el detonante máximo de euforia.
-
-\subsection{Análisis de Sabores}
-\begin{itemize}
-    \item \textbf{Control (Hielo):} Los sujetos mostraron indiferencia (10 apm).
-    \item \textbf{Pescado:} Aceptación moderada (45 apm).
-    \item \textbf{Krill:} Éxtasis total (95 apm). Se registraron casos de baile espontáneo.
-    \item \textbf{Vainilla:} Confusión (12 apm). Un sujeto intentó empollar la bola de helado.
-\end{itemize}
-
-\begin{table}[h!]
-    \centering
-    \caption{Estadísticas descriptivas del consumo de helado.}
-    \label{tab:stats}
-    \begin{tabular}{l c c c}
-        \toprule
-        \textbf{Sabor} & \textbf{Media (apm)} & \textbf{Desviación Estándar} & \textbf{Tasa de Derretimiento} \\
-        \midrule
-        Hielo & 10.2 & 1.1 & Lenta \\
-        Pescado & 45.5 & 5.3 & Media \\
-        Krill & 95.8 & 12.4 & Rápida (por consumo voraz) \\
-        Vainilla & 12.1 & 8.9 & Media \\
-        \bottomrule
+    \caption{Inventario de Pescado}
+    \label{tab:simple}
+    \begin{tabular}{|l|l|r|}
+        \hline
+        \tableheadersecondary
+        \hc{Especie} & \hc{Origen} & \hc{Cantidad (kg)} \\
+        \hline
+        Arenque & Atlántico Norte & 500 \\
+        \hline
+        Sardina & Mediterráneo & 350 \\
+        \hline
+        Krill & Antártico & 1200 \\
+        \hline
     \end{tabular}
 \end{table}
+% //===========
 
-\section{Discusión}
-Los resultados apoyan la teoría del "Cerebro Congelado Feliz". Es notable que el Dr. Oso Polar, siendo un depredador natural en otro hemisferio, tenga tanto interés en engordar a la población de pingüinos mediante carbohidratos complejos. Esto plantea dilemas éticos que serán abordados en futuras investigaciones.
+\subsection{Tabla Stripeada}
+Utiliza colores alternos para facilitar la lectura de grandes volúmenes de datos.
 
-\begin{figure}[h]
-    \flushleft % Figura no centrada
-    \begin{tikzpicture}
-        \draw[fill=nord14] (0,0) rectangle (4,4);
-        \node at (2,2) {\color{nord0}\textbf{Foto de Pingüino Feliz}};
-    \end{tikzpicture}
-    \caption{Sujeto \#42 disfrutando de su ración diaria (Alineación Izquierda).}
-    \label{fig:pinguino_feliz}
+% latex tablastripeada
+\begin{table}[h]
+    \centering
+    \rowcolors{2}{nord6}{white} % Alternar colores desde la fila 2
+    \caption{Registro de Actividades Diarias}
+    \label{tab:striped}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        \tableheaderprimary
+        \hc{Hora} & \hc{Agente} & \hc{Actividad} \\
+        \hline
+        06:00 & Skipper & Entrenamiento matutino \\
+        07:00 & Kowalski & Análisis de datos \\
+        08:00 & Rico & Demoliciones controladas \\
+        09:00 & Cabo & Avistamiento de mariposas \\
+        10:00 & Skipper & Reunión estratégica \\
+        \hline
+    \end{tabular}
+\end{table}
+% //===========
+
+
+
+\subsection{Tabla de Ancho Completo}
+Utiliza \texttt{tabularx} para ocupar todo el ancho de la página automáticamente.
+
+% latex tablafull
+\begin{table}[h]
+    \centering
+    \caption{Distribución de Recursos (Ancho Completo)}
+    \label{tab:fullwidth}
+    \begin{tabularx}{\textwidth}{|l|X|r|}
+        \hline
+        \tableheadersecondary
+        \hc{Recurso} & \hc{Descripción Detallada} & \hc{Prioridad} \\
+        \hline
+        Pescado & Suministro vital de energía para operaciones encubiertas y sobornos a focas. & Alta \\
+        \hline
+        Cinta Adhesiva & Herramienta universal para reparaciones, trampas y silenciamiento de testigos. & Media \\
+        \hline
+        Dinamita & Solución para puertas cerradas y problemas persistentes. & Crítica \\
+        \hline
+    \end{tabularx}
+\end{table}
+% //===========
+
+\subsection{Tablas con Encabezados de Color}
+Estilos personalizados para resaltar la cabecera.
+
+% latex tablaheader1
+\begin{table}[h]
+    \centering
+    \caption{Personal de Misión (Header Primario)}
+    \label{tab:header1}
+    \begin{tabular}{|l|l|r|}
+        \hline
+        \tableheaderprimary
+        \hc{Nombre} & \hc{Rango} & \hc{Especialidad} \\
+        \hline
+        Skipper & Comandante & Liderazgo \\
+        \hline
+        Kowalski & Teniente & Estrategia \\
+        \hline
+        Rico & Sargento & Demoliciones \\
+        \hline
+    \end{tabular}
+\end{table}
+% //===========
+
+% latex tablaheader2
+\begin{table}[h]
+    \centering
+    \caption{Objetivos Secundarios (Header Secundario)}
+    \label{tab:header2}
+    \begin{tabular}{|l|l|r|}
+        \hline
+        \tableheadersecondary
+        \hc{Objetivo} & \hc{Ubicación} & \hc{Dificultad} \\
+        \hline
+        Robar Cheezy Dibbles & Tienda de Regalos & Baja \\
+        \hline
+        Hackear TV & Oficina de Alice & Media \\
+        \hline
+    \end{tabular}
+\end{table}
+% //===========
+
+% ==========================================
+%  2. Listas
+% ==========================================
+\section{Listas}
+Organización de planes y pasos a seguir.
+
+\subsection{Listas No Ordenadas}
+Para elementos sin orden específico.
+
+% latex listaitem
+\begin{itemize}
+    \item Operación "Lindo y Gordito".
+    \item Plan de escape del zoológico.
+    \item Búsqueda de snacks con sabor a queso.
+\end{itemize}
+% //===========
+
+\subsection{Listas Ordenadas}
+Para secuencias de pasos.
+
+% latex listaenum
+\begin{enumerate}
+    \item Infiltrarse en el casino.
+    \item Hackear el sistema de seguridad.
+    \item Extraer el paquete.
+    \item Escapar en un auto deportivo.
+\end{enumerate}
+% //===========
+
+\subsection{Listas de Definición}
+Para glosarios o descripciones de roles.
+
+% latex listadesc
+\begin{description}
+    \item[Skipper] El líder intrépido y paranoico.
+    \item[Kowalski] El cerebro y analista científico.
+    \item[Rico] El especialista en armas y demoliciones.
+    \item[Cabo] El corazón del equipo y cebo adorable.
+\end{description}
+% //===========
+
+\section{Estructura de Columnas}
+Organización del texto en múltiples columnas para boletines o comparaciones.
+
+\subsection{Dos Columnas (1/2)}
+\begin{multicols}{2}
+    \textbf{Columna Izquierda:} \\
+    El pingüino emperador es la más grande de todas las especies de pingüinos. Pueden superar los 1,20 m de altura y pesan entre 20 y 45 kg.
+    
+    \columnbreak
+    
+    \textbf{Columna Derecha:} \\
+    Viven en la Antártida y son famosos por sus viajes heroicos para reproducirse en el invierno antártico.
+\end{multicols}
+
+\subsection{Tres Columnas (1/3)}
+\begin{multicols}{3}
+    \textbf{Paso 1:} \\
+    Identificar el objetivo visualmente.
+    
+    \columnbreak
+    
+    \textbf{Paso 2:} \\
+    Calcular la trayectoria de deslizamiento.
+    
+    \columnbreak
+    
+    \textbf{Paso 3:} \\
+    Ejecutar la maniobra con estilo.
+\end{multicols}
+% //===========
+
+% ==========================================
+%  3. Figuras
+% ==========================================
+\section{Figuras}
+Ilustraciones tácticas y visualización de objetivos.
+
+\subsection{Figura Grande}
+Una imagen centrada que ocupa un ancho considerable.
+
+% latex figuragrande
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/penguin.png}
+    \caption{Sujeto de prueba estándar (Vista Frontal).}
+    \label{fig:grande}
 \end{figure}
+% //===========
 
-\section{Conclusiones}
-El helado no solo es delicioso, sino esencial para el desarrollo psicocognitivo de los pingüinos. Se recomienda la instalación inmediata de una franquicia de "Baskin-Robbins" en la Base McMurdo.
+\subsection{Figura Chica}
+Ideal para logotipos o imágenes pequeñas.
 
-\clearpage
-\addcontentsline{toc}{section}{Índice de figuras}
-\listoffigures
+% latex figurachica
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/penguin.png}
+    \caption{Versión compacta para transporte encubierto.}
+    \label{fig:chica}
+\end{figure}
+% //===========
 
-\clearpage
-\addcontentsline{toc}{section}{Índice de cuadros}
-\listoftables
+\subsection{Figuras Múltiples}
+Comparativa lado a lado utilizando subfiguras.
+
+% latex figuramultiple
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/penguin.png}
+        \caption{Antes del entrenamiento.}
+        \label{fig:antes}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/penguin.png}
+        \caption{Después del entrenamiento.}
+        \label{fig:despues}
+    \end{subfigure}
+    \caption{Evolución del recluta tras el programa intensivo.}
+    \label{fig:multiple}
+\end{figure}
+% //===========
+
+\subsection{Diseño Complejo de Figuras}
+Una figura grande a la izquierda y tres pequeñas a la derecha.
+
+% latex figuracompleja
+\begin{figure}[H]
+    \centering
+    % Left Column: Large Image (1:1 aspect ratio implied by sketch)
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/penguin.png}
+    \end{minipage}\hfill
+    % Right Column: Vertical Stack
+    \begin{minipage}{0.35\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{img/penguin.png}
+        \vspace{1em} % Space between images
+        
+        \includegraphics[width=0.8\linewidth]{img/penguin.png}
+        \vspace{1em}
+        
+        \includegraphics[width=0.8\linewidth]{img/penguin.png}
+    \end{minipage}
+    \caption{Vista General del Cuartel y Detalles Tácticos (A, B y C).}
+    \label{fig:compleja}
+\end{figure}
+% //===========
+
+% ==========================================
+%  4. Código
+% ==========================================
+\section{Código}
+Fragmentos de algoritmos utilizados en la "Kowalski Analysis Machine".
+
+\subsection{Bloque de Código}
+Ejemplo de un script en Python para calcular la trayectoria de vuelo (teórica).
+
+% latex codigobloque
+\begin{lstlisting}[language=Python, caption=CalculoTrayectoria.py]
+def calcular_vuelo(peso, envergadura):
+    """
+    Calcula si un pingüino puede volar.
+    Spoiler: No puede.
+    """
+    gravedad = 9.81
+    sustentacion = 0
+    
+    if peso > 0 and envergadura > 0:
+        print("Iniciando secuencia de despegue...")
+        # Aplicar física de dibujos animados
+        sustentacion = (envergadura * 100) / peso
+        
+    if sustentacion > gravedad:
+        return True
+    else:
+        return "Solo si te lanzan de un cañón"
+\end{lstlisting}
+% //===========
+
+\subsection{Bloque de Código (Sin Números)}
+Para snippets rápidos donde la línea no importa.
+
+% latex codigononum
+\begin{lstlisting}[style=nordcode-nonum, language=Bash, caption=InstalarDependencias.sh]
+sudo apt-get update
+sudo apt-get install libpenguin-dev
+\end{lstlisting}
+% //===========
+
+\subsection{Bloque de Código (Estilo Oscuro)}
+Para resaltar bloques críticos o de otro contexto.
+
+% latex codigodark
+\begin{lstlisting}[style=nordcode-dark, language=Python, caption=NucleoDelSistema.py]
+class SelfDestruct:
+    def __init__(self):
+        self.timer = 10
+        
+    def activate(self):
+        while self.timer > 0:
+            print(f"Autodestrucción en {self.timer}...")
+            self.timer -= 1
+        print("KABOOM!")
+\end{lstlisting}
+% //===========
+
+\subsection{Código en Línea}
+Para mencionar variables o comandos específicos.
+
+% latex codigolinea
+El comando \texttt{sudo apt-get install fish} es esencial para mantener la moral alta. La clase \texttt{Penguin} hereda de \texttt{Bird} pero sobreescribe el método \texttt{fly()} con una excepción de tipo \texttt{NotImplementedError}.
+% //===========
+
+% ==========================================
+%  5. Tipos de Texto
+% ==========================================
+\section{Tipos de Texto}
+Diferentes formas de enfatizar la información en los reportes de misión.
+
+\subsection{Estilos Básicos}
+% latex textoestilos
+Texto \textbf{en negrita} para órdenes directas. \\
+Texto \textit{en cursiva} para pensamientos internos o sarcasmo. \\
+Texto \underline{subrayado} para énfasis crítico. \\
+Texto \texttt{monoespaciado} para datos de teletipo.
+% //===========
+
+\subsection{Citas}
+Para referencias a frases célebres del equipo.
+
+% latex textocita
+\begin{quote}
+    "¡Sonrían y saluden, muchachos! ¡Sonrían y saluden!"
+    \flushright --- Skipper
+\end{quote}
+% //===========
+
+\subsection{Texto Resaltado (Colores Nord)}
+Uso de la paleta de colores para categorizar información.
+
+% latex textocolor
+\textcolor{nord11}{\textbf{ALERTA ROJA:}} Foca leopardo detectada en el sector 7. \\
+\textcolor{nord13}{\textbf{ADVERTENCIA:}} Nivel de snacks bajo mínimos. \\
+\textcolor{nord14}{\textbf{ESTADO:}} Operación exitosa. \\
+\textcolor{nord10}{\textbf{Información:}} La temperatura del agua es óptima (-2°C).
+% //===========
 
 \end{document}

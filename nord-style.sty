@@ -19,10 +19,19 @@
 \RequirePackage{booktabs}
 \RequirePackage{ragged2e}
 \RequirePackage{subcaption}
+\RequirePackage{multirow}
 \RequirePackage{datetime} % For dynamic dates if needed
+\RequirePackage{tabularx} % For full width tables
+\RequirePackage{multicol} % For multi-column text
+\RequirePackage{inconsolata} % Monospace font
 
 % Set default font to Sans Serif
 \renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\ttdefault}{zi4} % Set Inconsolata as default typewriter font
+
+% Paragraph Formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
 
 % Nord Color Palette
 \definecolor{nord0}{HTML}{2E3440} % Polar Night (Darkest)
@@ -41,6 +50,57 @@
 \definecolor{nord13}{HTML}{EBCB8B}
 \definecolor{nord14}{HTML}{A3BE8C}
 \definecolor{nord15}{HTML}{B48EAD}
+\definecolor{nordstringdark}{HTML}{4C663A} % Darker Green for Light Background
+
+% Code Listing Configuration
+\RequirePackage{listings}
+\RequirePackage{colortbl}
+
+\lstdefinestyle{nordcode}{
+    backgroundcolor=\color{nord6},   
+    commentstyle=\color{nord3}\itshape,
+    keywordstyle=\color{nord10}\bfseries,
+    numberstyle=\tiny\color{nord3},
+    stringstyle=\color{nordstringdark},
+    basicstyle=\ttfamily\small\color{nord0},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{nord4},
+    extendedchars=true,
+    inputencoding=utf8,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1
+}
+
+\lstdefinestyle{nordcode-nonum}{
+    style=nordcode,
+    numbers=none
+}
+
+\lstdefinestyle{nordcode-dark}{
+    style=nordcode,
+    backgroundcolor=\color{nord1},
+    basicstyle=\ttfamily\small\color{nord6},
+    keywordstyle=\color{nord8}\bfseries,
+    commentstyle=\color{nord4}\itshape,
+    stringstyle=\color{nord14}, % Keep light green for dark background
+    frame=single,
+    framerule=0pt,
+    framesep=5pt,
+    rulesep=0pt,
+    rulecolor=\color{nord1},
+    fillcolor=\color{nord1}
+}
+                                                                                                                                                                                                                                                    
+\lstset{style=nordcode}
 
 % Configuration Variables
 \newcommand{\themecolor}{nord0} 
@@ -58,6 +118,19 @@
 
 % Command to switch header color
 \newcommand{\setheadercolor}[1]{\renewcommand{\currentheadercolor}{#1}}
+
+% Table Settings
+\renewcommand{\arraystretch}{1.5} % Increase padding
+
+% Table Header Helper
+\newcommand{\currentheadertextcolor}{nord0}
+\newcommand{\hc}[1]{\textcolor{\currentheadertextcolor}{\textbf{#1}}}
+
+% Table Header Colors
+% Primary: Light Background (Nord4), Dark Text (Nord0)
+\newcommand{\tableheaderprimary}{\rowcolor{nord4}\gdef\currentheadertextcolor{nord0}}
+% Secondary: Dark Background (Nord0), Light Text (Nord6)
+\newcommand{\tableheadersecondary}{\rowcolor{nord0}\gdef\currentheadertextcolor{nord6}}
 
 % Page Geometry
 \geometry{
